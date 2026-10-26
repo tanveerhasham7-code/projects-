@@ -1,0 +1,11 @@
+# Synthetic teaching examples only; no real system logs.
+Oct 26 10:00:01 lab-host sshd[1001]: Failed password for invalid user admin from 203.0.113.10 port 50101 ssh2
+Oct 26 10:00:05 lab-host sshd[1002]: Failed password for invalid user admin from 203.0.113.10 port 50102 ssh2
+Oct 26 10:00:09 lab-host sshd[1003]: Failed password for root from 203.0.113.10 port 50103 ssh2
+Oct 26 10:00:13 lab-host sshd[1004]: Failed password for user from 203.0.113.10 port 50104 ssh2
+Oct 26 10:00:17 lab-host sshd[1005]: Failed password for admin from 203.0.113.10 port 50105 ssh2
+Oct 26 10:02:01 lab-host sshd[1010]: Accepted publickey for tanveer from 192.0.2.25 port 50201 ssh2
+Oct 26 10:03:11 lab-host sshd[1011]: Failed password for guest from 198.51.100.8 port 50301 ssh2
+Oct 26 10:04:11 lab-host sshd[1012]: Accepted password for student from 192.0.2.25 port 50401 ssh2
+Oct 26 10:05:00 lab-host systemd[1]: Started example training service.
+Oct 26 10:06:00 lab-host sshd[1013]: Failed password for invalid user test from 198.51.100.8 port 50501 ssh2
