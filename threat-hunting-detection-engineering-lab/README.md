@@ -20,7 +20,7 @@ Use your existing Wazuh server and Windows/Linux endpoints. Do not reinstall any
 
 ## Project status
 
-<badge>Documentation and exercise plans prepared</badge>
+**Current stage:** Documentation and exercise plans prepared; practical validation remains to be completed.
 
 Hands-on validation, screenshots, alert IDs, event samples, and measured outcomes are intentionally left for the learner to add after running each exercise. No detection is claimed as validated until evidence is recorded.
 
