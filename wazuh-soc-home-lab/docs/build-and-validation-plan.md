@@ -1,33 +1,34 @@
-# Build and Validation Plan
+# Existing Lab Audit and Validation Plan
 
-This is the execution checklist. Mark an item complete only after performing it and recording evidence.
+The author reports that the Wazuh lab is already installed and has been used for practice. **Do not reinstall or rebuild it by default.** First inspect the current environment, capture its configuration, and document prior work. Mark an item complete only after checking it in the actual lab and recording evidence.
 
-## Phase 0 — Host readiness
+## Phase 0 — Audit the existing environment
 
 - [ ] Confirm host OS and version.
 - [ ] Confirm CPU model, core count, and hardware virtualization support.
 - [ ] Confirm available disk space and virtualization platform.
 - [ ] Record host specifications in the lab journal.
 - [ ] Create a dedicated lab folder and backup important files.
+- [ ] Record what practical exercises have already been attempted, even if they were not documented at the time.
+- [ ] Collect existing screenshots, alert examples, notes, and terminal output where available.
 
-## Phase 1 — Wazuh server
+## Phase 1 — Verify the existing Wazuh server
 
-- [ ] Create Ubuntu Server VM using the resource plan in [architecture.md](architecture.md).
-- [ ] Apply updates and configure a non-root administrative account.
-- [ ] Install Wazuh all-in-one using the current official Quickstart guide.
-- [ ] Save the installed Wazuh version and installation date.
+- [ ] Identify the existing Wazuh server VM / host and its OS.
+- [ ] Record the installed Wazuh version and installation date if known.
+- [ ] Check current Wazuh services and dashboard health.
+- [ ] Record the existing VM resource allocation.
 - [ ] Verify manager, indexer, and dashboard services.
 - [ ] Sign in to the dashboard and capture a redacted screenshot.
 - [ ] Take a clean VM snapshot.
 
-**Acceptance criteria:** dashboard is reachable from the trusted lab network; required Wazuh services are healthy; no credentials are stored in the repository.
+**Acceptance criteria:** existing dashboard is reachable from the trusted lab network; required Wazuh services are healthy; version and configuration details are documented; no credentials are stored in the repository.
 
-## Phase 2 — Windows endpoint
+## Phase 2 — Audit the existing Windows endpoint
 
-- [ ] Install Sysmon from Microsoft's official Sysinternals source.
-- [ ] Select and document a reputable Sysmon configuration; record its source and version.
+- [ ] Check whether Sysmon is already installed; record its version and configuration source.
 - [ ] Confirm Sysmon service and event channel are active.
-- [ ] Install and enrol the Wazuh agent.
+- [ ] Check whether the Wazuh agent is already installed and enrolled; record its version.
 - [ ] Configure collection of the required Windows Security and Sysmon channels.
 - [ ] Confirm the endpoint appears active in Wazuh.
 - [ ] Generate a harmless test event and locate it in the dashboard.
@@ -35,10 +36,10 @@ This is the execution checklist. Mark an item complete only after performing it 
 
 **Acceptance criteria:** a known test event from Windows is visible in Wazuh with the expected endpoint and timestamp.
 
-## Phase 3 — Linux endpoint
+## Phase 3 — Audit the existing Linux endpoint
 
-- [ ] Create or select a Linux endpoint inside the lab.
-- [ ] Install and enrol the Wazuh agent.
+- [ ] Identify the Linux endpoint already used in the lab and record its distribution/version.
+- [ ] Check whether the Wazuh agent is already installed and enrolled; record its version.
 - [ ] Confirm authentication log collection for the distribution.
 - [ ] Confirm the endpoint appears active.
 - [ ] Generate a controlled authentication test using a lab-only account.
@@ -46,8 +47,10 @@ This is the execution checklist. Mark an item complete only after performing it 
 
 **Acceptance criteria:** a known Linux authentication event is visible in Wazuh.
 
-## Phase 4 — Detection validation
+## Phase 4 — Reconstruct previous practice and validate detections
 
+- [ ] List the exercises and alerts you remember testing previously.
+- [ ] Recover any existing screenshots, saved alerts, notes, or terminal output.
 - [ ] Select one use case from [detection-use-cases.md](detection-use-cases.md).
 - [ ] Record expected telemetry and expected alert behaviour before testing.
 - [ ] Run only the harmless, authorized test steps.
