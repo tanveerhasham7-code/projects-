@@ -17,11 +17,13 @@ Complete this page as the environment is built. Do not publish secrets or sensit
 
 | Name / role | OS and version | vCPU | RAM | Disk | Agent status |
 |---|---|---:|---:|---:|---|
-| Wazuh server | Ubuntu Server — planned | 4 | 8 GB | 60 GB | Not installed |
-| Linux endpoint | To be selected | TBD | TBD | TBD | Not enrolled |
-| Windows endpoint | Host Windows — confirm version | Host | Host | Host | Not enrolled |
+| Wazuh server | Existing OS/version — to confirm | To record | To record | To record | Installed (author-reported; verify) |
+| Linux endpoint | Existing distribution/version — to confirm | To record | To record | To record | Existing state to verify |
+| Windows endpoint | Existing Windows version — to confirm | Host | Host | Host | Existing state to verify |
 
 ## Platform versions
+
+The author reports that the lab is already installed and has been tried. Fill in the exact versions from the running environment; do not guess.
 
 | Component | Version | Installed date | Notes |
 |---|---|---|---|
