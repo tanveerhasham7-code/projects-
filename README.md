@@ -91,3 +91,11 @@ Python • Regular expressions • Log parsing • Security monitoring • Basic
 4. Compare alerts against a known benign sample and document false positives.
 
 Created as a learning project by **Tanveer Hassham**, cybersecurity student.
+
+## Featured Project: Real SOC Home Lab (Wazuh + Windows + Linux)
+
+A structured defensive monitoring lab with a Wazuh SIEM architecture, Windows and Linux telemetry plan, detection use cases, investigation workflow, incident-report template, and evidence folders.
+
+**Project status:** documentation scaffold prepared; hands-on installation, event collection, and detection validation are still pending. Screenshots and measured results will be added after real practice.
+
+[Open the Wazuh SOC Home Lab](wazuh-soc-home-lab/README.md)
