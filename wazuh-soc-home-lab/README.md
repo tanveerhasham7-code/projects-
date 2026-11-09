@@ -1,7 +1,7 @@
 # Real SOC Home Lab — Wazuh + Windows + Linux
 
-> **Project status: Documentation scaffold — hands-on deployment and validation are pending.**  
-> This repository contains the architecture, implementation plan, detection backlog, investigation templates, and evidence structure. It does **not** claim that Wazuh has been installed, endpoints enrolled, alerts generated, or detections tested. Those sections will be updated only after the lab is run and evidence is captured.
+> **Project status: Existing lab reported by the author — documentation and evidence are being reconstructed.**  
+> The author reports that the Wazuh lab is already installed and has been used for practice. Exact platform versions, topology, enrolled agents, tested detections, and results have not yet been recorded or independently verified in this repository. This project currently provides the documentation framework; practical claims will be added only after reviewing the actual environment and available evidence.
 
 A portfolio-grade, defensive security monitoring lab designed to demonstrate the workflow of a junior Security Operations Center (SOC) analyst: collect endpoint telemetry, centralize events, investigate alerts, map activity to MITRE ATT&CK, document decisions, and recommend response actions.
 
@@ -15,7 +15,7 @@ A portfolio-grade, defensive security monitoring lab designed to demonstrate the
 | Endpoint 2 | Linux endpoint with Wazuh agent |
 | Main skills | Log collection, alert triage, Windows/Linux event analysis, detection validation, incident reporting |
 | Lab scope | Local, isolated, owned systems and synthetic test activity |
-| Current state | Design and documentation prepared; deployment not yet validated |
+| Current state | Lab installation and prior practice reported by author; configuration and test evidence pending documentation |
 
 ## Objectives
 
@@ -68,15 +68,14 @@ wazuh-soc-home-lab/
 
 ## Build sequence
 
-1. Confirm host OS, CPU virtualization support, free disk space, and VirtualBox/VMware choice.
-2. Create the Ubuntu Server VM for the Wazuh all-in-one deployment.
-3. Install Wazuh using the current official documentation and record exact versions.
-4. Enrol the Windows endpoint; configure Sysmon and the Wazuh agent.
-5. Enrol the Linux endpoint and verify authentication-log collection.
-6. Validate agent connectivity and event ingestion before testing detections.
-7. Run the controlled use cases in [detection-use-cases.md](docs/detection-use-cases.md).
-8. Investigate each generated alert and complete a report using the template.
-9. Add redacted screenshots and measured results to the evidence folders.
+1. Audit the existing lab before changing or reinstalling anything: confirm host OS, hypervisor, VM topology, and platform versions.
+2. Verify Wazuh manager, indexer, and dashboard health.
+3. Verify which Windows and Linux endpoints are enrolled and whether their agents are connected.
+4. Confirm Sysmon and Linux authentication telemetry are actually arriving.
+5. Reconstruct the practical tests already performed from available alerts, logs, screenshots, and your recollection.
+6. Run any missing controlled validation cases in [detection-use-cases.md](docs/detection-use-cases.md).
+7. Investigate selected alerts and complete reports using the template.
+8. Add redacted screenshots and measured results to the evidence folders.
 
 **Do not skip validation:** an agent showing as active is not by itself proof that every expected event is being collected.
 
@@ -102,7 +101,7 @@ Every completed lab should include:
 - False-positive / benign explanation considered
 - Outcome and recommended next action
 
-Until that evidence exists, label the use case **Planned** or **Not yet validated**. Never fabricate screenshots, alert counts, incident outcomes, or test results.
+Until that evidence is reviewed and recorded, label each use case **Reported by author — evidence pending**, **Planned**, or **Not yet validated** as appropriate. Never fabricate screenshots, alert counts, incident outcomes, or test results.
 
 ## Safety
 
