@@ -1,0 +1,25 @@
+title: Windows PowerShell Encoded Command Indicator
+id: 6b3a9c22-75f1-4d8e-9b45-100000000001
+status: experimental
+description: Identifies PowerShell process command lines containing a common encoded-command switch. This is a triage signal, not proof of malicious activity.
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+author: Lab learning project
+date: 2026/11/09
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  selection:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - '-EncodedCommand'
+      - '-enc '
+  condition: selection
+falsepositives:
+  - Authorized administration scripts
+  - Software deployment and management tools
+level: medium
+tags:
+  - attack.execution
+  - attack.t1059.001
