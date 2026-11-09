@@ -1,101 +1,34 @@
-# LogSentry — Security Log Analyzer 🛡️
+# Cybersecurity Projects
 
-LogSentry is a beginner-friendly Python project that reads **local authentication logs** and highlights patterns that may deserve investigation. It helps students practice Python, regular expressions, log analysis, and basic security monitoring (a core SOC skill).
+A portfolio of defensive security projects, log analysis, SOC operations, threat hunting, and detection engineering.
 
-> **Safety and scope:** LogSentry only reads the file you provide. It does not connect to computers, scan networks, block IP addresses, or prove that an event is malicious. Review alerts in context before taking action.
+## Projects
 
-## Features
+### 1. LogSentry — Security Log Analyzer
+A Python tool that analyzes local synthetic authentication logs and highlights repeated failed logins for further review.
 
-- Counts failed and successful SSH-style authentication events
-- Groups failed logins by source IP address
-- Flags IP addresses with repeated failures based on a configurable threshold
-- Counts failed attempts against usernames
-- Prints a readable summary
-- Includes synthetic sample logs and unit tests
-- Uses only the Python standard library
+[Open LogSentry](./)
 
-## Requirements
+### 2. Wazuh SOC Home Lab — Windows + Linux
+A structured SIEM/SOC lab project covering Wazuh architecture, endpoint telemetry, detection use cases, investigation workflow, incident reporting, and evidence collection.
 
-- Python 3.9+
-- No third-party packages
+**Lab status:** The author reports that the Wazuh lab is already installed and has been used for practice. Exact versions, topology, agent health, telemetry, and tested detections are being documented and verified. Screenshots and measured results will be added after practical validation.
 
-## Run it
+[Open Wazuh SOC Home Lab](wazuh-soc-home-lab/README.md)
 
-Analyze the included sample log:
+### 3. Threat Hunting & Detection Engineering Lab
+An advanced blue-team project that builds on the Wazuh lab. It covers telemetry engineering, Sigma rule candidates, hypothesis-led threat hunts, detection validation, false-positive tuning, MITRE ATT&CK mapping, and professional investigation reports.
 
-```bash
-python log_sentry.py --file sample_auth.log
-```
+**Project status:** Documentation, learning roadmap, hunt playbooks, rule candidates, and evidence templates are prepared. Practical tests and screenshots will be added by the author after completing each exercise. Rules are not presented as validated detections.
 
-Change the repeated-failure threshold (default is 5):
+[Open Threat Hunting & Detection Engineering Lab](threat-hunting-detection-engineering-lab/README.md)
 
-```bash
-python log_sentry.py --file sample_auth.log --threshold 3
-```
+## Portfolio principles
 
-Run automated tests:
+- Document only work that was actually performed.
+- Separate planned work from tested results.
+- Use isolated systems that you own or are authorized to test.
+- Sanitize screenshots and logs before publishing.
+- Explain limitations and false positives, not just successful outcomes.
 
-```bash
-python -m unittest discover -s tests -v
-```
-
-## Example output
-
-The exact counts depend on the contents of the log file.
-
-```text
-LogSentry - Authentication Log Summary
-Events analyzed: 10
-Failed logins: 6
-Successful logins: 2
-Other/unrecognized lines: 2
-
-Sources with repeated failed logins (threshold: 5):
-  203.0.113.10: 5 failures
-
-Most targeted usernames:
-  admin: 3 failed attempts
-```
-
-The documentation IP range `203.0.113.0/24` is reserved for examples; the sample data is synthetic and does not describe real activity.
-
-## What it looks for
-
-LogSentry recognizes common SSH-style messages containing:
-- `Failed password`
-- `Invalid user` alongside a failed-password event
-- `Accepted password` or `Accepted publickey`
-
-Log formats differ between Linux distributions and services. Unrecognized formats are counted but not interpreted.
-
-## Project structure
-
-```text
-projects-/
-├── README.md
-├── log_sentry.py
-├── sample_auth.log
-└── tests/
-    └── test_log_sentry.py
-```
-
-## Skills demonstrated
-
-Python • Regular expressions • Log parsing • Security monitoring • Basic incident triage • Unit testing • CLI tools
-
-## Suggested next steps
-
-1. Add JSON or CSV report export.
-2. Add support for another documented log format.
-3. Create a small dashboard for results.
-4. Compare alerts against a known benign sample and document false positives.
-
-Created as a learning project by **Tanveer Hassham**, cybersecurity student.
-
-## Featured Project: Real SOC Home Lab (Wazuh + Windows + Linux)
-
-A structured defensive monitoring lab with a Wazuh SIEM architecture, Windows and Linux telemetry plan, detection use cases, investigation workflow, incident-report template, and evidence folders.
-
-**Project status:** documentation scaffold prepared; hands-on installation, event collection, and detection validation are still pending. Screenshots and measured results will be added after real practice.
-
-[Open the Wazuh SOC Home Lab](wazuh-soc-home-lab/README.md)
+Created as a cybersecurity learning portfolio.
