@@ -1,0 +1,21 @@
+# Detection Specification
+
+- Detection ID:
+- Name:
+- Status: Planned / Implemented / Tested-Pass / Tested-Fail / Inconclusive
+- Behavior to detect:
+- Hypothesis:
+- Data source:
+- Required event IDs / fields:
+- Matching logic:
+- Grouping / threshold / time window:
+- Expected benign causes:
+- False-positive considerations:
+- Severity:
+- Confidence:
+- ATT&CK mapping and evidence:
+- Safe test plan:
+- Expected result:
+- Actual result:
+- Known limitations:
+- Rule version:
