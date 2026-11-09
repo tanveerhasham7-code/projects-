@@ -1,0 +1,23 @@
+title: Windows Failed Logon Event
+id: 6b3a9c22-75f1-4d8e-9b45-100000000003
+status: experimental
+description: Collects failed logon events as a building block for a threshold-based password-guessing detection. A single failure is not evidence of brute force.
+references:
+  - https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4625
+author: Lab learning project
+date: 2026/11/09
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4625
+  condition: selection
+falsepositives:
+  - Mistyped passwords
+  - Expired credentials
+  - Services using outdated credentials
+level: low
+tags:
+  - attack.credential_access
+  - attack.t1110
