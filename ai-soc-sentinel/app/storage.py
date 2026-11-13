@@ -18,21 +18,28 @@ def connect(path: str):
         risk_score INTEGER NOT NULL,
         notify_analyst INTEGER NOT NULL,
         decision_json TEXT NOT NULL,
+        ai_assessment_json TEXT NOT NULL DEFAULT '{}',
         notification_status TEXT NOT NULL
     )""")
+    # Lightweight migration for databases created by an earlier project version.
+    columns = {row[1] for row in db.execute("PRAGMA table_info(cases)")}
+    if "ai_assessment_json" not in columns:
+        db.execute("ALTER TABLE cases ADD COLUMN ai_assessment_json TEXT NOT NULL DEFAULT '{}'")
     return db
 
-def save_case(path: str, fingerprint: str, event: dict, decision: dict, notification_status: str) -> bool:
+def save_case(path: str, fingerprint: str, event: dict, decision: dict,
+              notification_status: str, ai_result: dict | None = None) -> bool:
     db = connect(path)
     try:
         cursor = db.execute(
             """INSERT OR IGNORE INTO cases
             (fingerprint, received_at, alert_id, agent_name, severity, risk_score,
-             notify_analyst, decision_json, notification_status)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+             notify_analyst, decision_json, ai_assessment_json, notification_status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (fingerprint, datetime.now(timezone.utc).isoformat(), event.get("alert_id"),
              event.get("agent_name"), decision["severity"], decision["risk_score"],
-             int(decision["notify_analyst"]), json.dumps(decision), notification_status),
+             int(decision["notify_analyst"]), json.dumps(decision),
+             json.dumps(ai_result or {}), notification_status),
         )
         db.commit()
         return cursor.rowcount == 1
