@@ -35,6 +35,13 @@ A cloud blue-team project for analyzing CloudTrail events, triaging IAM and auth
 
 [Open Cloud Security Monitoring Lab](cloud-security-monitoring-lab/README.md)
 
+## 6. DFIR — Digital Forensics & Incident Response Lab
+A comprehensive forensic investigation project covering evidence preservation, SHA-256 integrity verification, chain of custody, Windows and Linux artefacts, disk and memory forensics, network evidence, timeline reconstruction, hypothesis-led investigation, and professional reporting. Includes two Python utilities, synthetic training data, automated tests, 12 guided practical labs, and reusable case templates.
+
+**Status:** Learning material, local utilities, synthetic examples, and templates are added. No real forensic acquisition, live incident investigation, or practical completion is claimed until exercises are performed and evidence is documented.
+
+[Open DFIR Digital Forensics Lab](dfir-digital-forensics-lab/README.md)
+
 ## Portfolio principles
 - Document only work that was actually performed.
 - Separate planned work from tested results.
