@@ -1,6 +1,6 @@
 # AI-SOC Sentinel — AI-Assisted SIEM Monitoring & Incident Response
 
-A portfolio-grade, defensive SOC engineering project that connects Wazuh SIEM alerts to an event-processing service, applies deterministic detection and risk scoring, optionally asks an LLM for a constrained triage assessment, stores an auditable case record, and emails a human analyst when an event crosses the configured notification threshold.
+A portfolio-grade, defensive SOC engineering project that connects Wazuh SIEM alerts to an event-processing service, applies deterministic detection and risk scoring, optionally asks an LLM for a constrained triage assessment, stores an auditable case record, and emails a human analyst for high/critical events or when the configured risk threshold is crossed.
 
 > **Status and honesty:** This repository contains implementation code, configuration examples, synthetic events, tests, and a guided lab. It is not connected to a live Wazuh manager or email account by default. No live alert delivery, AI accuracy, production readiness, or practical completion is claimed. The learner must configure, run, test, and capture evidence in an authorized lab.
 
@@ -12,7 +12,7 @@ A portfolio-grade, defensive SOC engineering project that connects Wazuh SIEM al
 4. **Uses AI as an assistant, not an authority:** optional LLM analysis receives a minimized event summary and returns a strict JSON assessment. Untrusted log content is explicitly treated as data, not instructions.
 5. **Applies policy gates:** a deterministic policy combines rule severity, risk score, AI confidence, and validation. AI cannot downgrade a critical deterministic finding or authorize response actions.
 6. **Creates an auditable case:** SQLite stores event hash, decision, AI assessment, and notification outcome.
-7. **Emails the analyst:** high/critical cases trigger SMTP email containing a concise summary, rationale, evidence fields, and a link placeholder for the analyst's SIEM console.
+7. **Emails the analyst:** high/critical cases trigger SMTP email containing a concise summary, rationale, and key evidence fields.
 8. **Keeps response human-controlled:** this version does not disable accounts, kill processes, isolate endpoints, modify firewall rules, or execute commands.
 
 ## Architecture
@@ -114,7 +114,7 @@ Do not change Wazuh manager configuration on a production system for this exerci
 ## Included scenarios
 
 - Repeated authentication failures / possible brute-force activity.
-- Successful login after repeated failures (correlation exercise).
+- A synthetic combined authentication scenario for triage; stateful multi-event correlation is a documented extension, not yet implemented.
 - High-severity Wazuh rule alert.
 - Suspicious PowerShell process event (triage lead, not proof of malware).
 - Privileged account or IAM-related change (where source telemetry provides it).
