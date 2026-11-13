@@ -38,3 +38,11 @@ def save_case(path: str, fingerprint: str, event: dict, decision: dict, notifica
         return cursor.rowcount == 1
     finally:
         db.close()
+
+def update_notification(path: str, fingerprint: str, status: str) -> None:
+    db = connect(path)
+    try:
+        db.execute("UPDATE cases SET notification_status=? WHERE fingerprint=?", (status, fingerprint))
+        db.commit()
+    finally:
+        db.close()
