@@ -41,7 +41,7 @@ async def wazuh_webhook(request: Request, x_webhook_token: str | None = Header(d
     notification_status = "not_required"
     if decision["notify_analyst"]:
         notification_status = "pending"
-    inserted = save_case(config.DATABASE_PATH, fingerprint, event, decision, notification_status)
+    inserted = save_case(config.DATABASE_PATH, fingerprint, event, decision, notification_status, ai_result)
     if not inserted:
         return {"status": "duplicate_ignored", "fingerprint": fingerprint}
     if decision["notify_analyst"]:
