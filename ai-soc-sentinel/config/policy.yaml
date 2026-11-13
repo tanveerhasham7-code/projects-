@@ -1,0 +1,15 @@
+# Reference policy. The initial implementation reads threshold from .env.
+notification:
+  risk_score_threshold: 70
+  notify_on_deterministic_critical: true
+ai:
+  enabled_by_default: false
+  minimum_confidence_to_raise_risk: 0.70
+  can_downgrade_deterministic_severity: false
+  can_execute_response_actions: false
+response:
+  mode: human_in_the_loop
+  automatic_containment: false
+  allowed_automatic_actions:
+    - create_audit_record
+    - send_analyst_email
