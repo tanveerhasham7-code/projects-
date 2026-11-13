@@ -42,6 +42,13 @@ A comprehensive forensic investigation project covering evidence preservation, S
 
 [Open DFIR Digital Forensics Lab](dfir-digital-forensics-lab/README.md)
 
+## 7. AI-SOC Sentinel — AI-Assisted SIEM Monitoring & Incident Response
+An advanced SOC automation project integrating Wazuh alert ingestion, deterministic event triage and risk scoring, optional LLM-based alert summarization, policy-gated decisions, SQLite case auditing, and SMTP email notifications for human analysts. Includes a Wazuh integration adapter, synthetic alerts, unit tests, theory, architecture, threat model, detection-engineering guidance, lab exercises, and incident-response templates.
+
+**Status:** Implementation and learning materials are committed. The project is not yet connected to a live Wazuh manager, AI provider, or SMTP mailbox. No live alert delivery, model accuracy, or completed practical is claimed. AI is advisory; disruptive containment remains under human approval.
+
+[Open AI-SOC Sentinel](ai-soc-sentinel/README.md)
+
 ## Portfolio principles
 - Document only work that was actually performed.
 - Separate planned work from tested results.
