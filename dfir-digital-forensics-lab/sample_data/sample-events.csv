@@ -1,0 +1,5 @@
+timestamp,source,event,details,evidence_id
+2026-11-10T09:08:00Z,Windows-Security,Logon-success,Training user logged on to the lab VM,EVD-001
+2026-11-10T09:04:00Z,Windows-Sysmon,Process-create,Example text editor process started in synthetic training data,EVD-002
+2026-11-10T09:06:00Z,Lab-DNS,DNS-query,Training host queried example.test,EVD-003
+2026-11-10T09:10:00Z,Windows-System,Service-event,Synthetic service state event for timeline practice,EVD-004
