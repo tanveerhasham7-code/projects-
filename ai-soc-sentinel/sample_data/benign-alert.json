@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-11-13T09:20:00Z",
+  "id": "training-alert-benign-0001",
+  "rule": {"id": "550", "level": 3, "description": "Synthetic routine service started", "groups": ["syslog", "service", "training"]},
+  "agent": {"id": "008", "name": "UBUNTU-LAB-01"},
+  "data": {"srcuser": "service-account", "process": "systemd"},
+  "full_log": "SYNTHETIC TRAINING DATA ONLY: routine service start event."
+}
