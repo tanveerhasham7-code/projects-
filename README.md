@@ -28,6 +28,13 @@ An end-to-end, isolated purple-team environment with a Windows monitored endpoin
 
 [Open Three-Machine Purple Team Lab](purple-team-three-machine-lab/README.md)
 
+## 5. Cloud Security Monitoring & Incident Response Lab — AWS CloudTrail + Python
+A cloud blue-team project for analyzing CloudTrail events, triaging IAM and authentication activity, reviewing public network exposure, and documenting cloud incident investigations. Includes a local Python triage tool, fictional JSONL events, automated tests, detection use cases, a guided lab, and an incident-report template.
+
+**Status:** Local tooling, synthetic sample data, documentation, and tests are added. No live AWS telemetry, GuardDuty finding, or production detection is claimed. Optional AWS exercises require an account owned by the author and careful cost review.
+
+[Open Cloud Security Monitoring Lab](cloud-security-monitoring-lab/README.md)
+
 ## Portfolio principles
 - Document only work that was actually performed.
 - Separate planned work from tested results.
