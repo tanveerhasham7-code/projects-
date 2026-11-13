@@ -1,0 +1,2 @@
+case_id,evidence_id,description,source_device,collector,from_person,to_person,transfer_time_utc,purpose,storage_location,sha256,condition,notes
+TRAINING-CASE-001,EVD-001,Synthetic training file,Training VM,Student,Student,Student,2026-11-10T09:00:00Z,Initial lab inventory,Private lab folder,Example-hash-not-real,Training-only,Fictional example row; replace with actual authorized lab details
