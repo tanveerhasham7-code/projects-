@@ -23,6 +23,18 @@ class EngineTests(unittest.TestCase):
         self.assertGreaterEqual(decision["risk_score"], det["risk_score"])
         self.assertTrue(decision["notify_analyst"])
 
+    def test_high_severity_cannot_be_downgraded_by_ai(self):
+        event = normalize_alert({"rule": {"id": "10", "level": 10, "description": "high priority"}})
+        det = deterministic_triage(event)
+        decision = apply_policy(det, {"severity": "low", "confidence": 1.0}, 70)
+        self.assertEqual(decision["severity"], "high")
+        self.assertTrue(decision["notify_analyst"])
+
+    def test_medium_severity_floor_is_preserved(self):
+        event = normalize_alert({"rule": {"id": "7", "level": 7, "description": "medium priority"}})
+        decision = apply_policy(deterministic_triage(event), None, 70)
+        self.assertEqual(decision["severity"], "medium")
+
     def test_fingerprint_is_stable(self):
         event = normalize_alert({"id": "abc", "rule": {"id": "10", "level": 8}})
         self.assertEqual(event_fingerprint(event), event_fingerprint(event))
