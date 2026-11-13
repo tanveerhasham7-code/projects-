@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 SEVERITY_POINTS = {"low": 10, "medium": 30, "high": 55, "critical": 75}
+SEVERITY_RANK = {"low": 0, "medium": 1, "high": 2, "critical": 3}
 
 def _first(mapping: dict, *keys, default=None):
     for key in keys:
@@ -22,13 +23,10 @@ def normalize_alert(alert: dict[str, Any]) -> dict[str, Any]:
     groups = rule.get("groups") or []
     if isinstance(groups, str):
         groups = [groups]
-    if isinstance(mitre, dict):
-        techniques = mitre.get("id") or []
-        if isinstance(techniques, str):
-            techniques = [techniques]
-    else:
-        techniques = []
-    normalized = {
+    techniques = mitre.get("id") or [] if isinstance(mitre, dict) else []
+    if isinstance(techniques, str):
+        techniques = [techniques]
+    return {
         "timestamp": _first(alert, "timestamp", "@timestamp", default=datetime.now(timezone.utc).isoformat()),
         "alert_id": str(_first(alert, "id", "alert_id", default="")),
         "rule_id": str(_first(rule, "id", default="")),
@@ -46,7 +44,6 @@ def normalize_alert(alert: dict[str, Any]) -> dict[str, Any]:
         "location": str(_first(data, "location", default="")),
         "full_log": str(_first(alert, "full_log", default=""))[:4000],
     }
-    return normalized
 
 def event_fingerprint(normalized: dict[str, Any]) -> str:
     stable = {k: normalized.get(k) for k in (
@@ -89,28 +86,29 @@ def deterministic_triage(event: dict[str, Any]) -> dict[str, Any]:
         reasons.append("Endpoint security telemetry group matched")
 
     score = max(SEVERITY_POINTS[severity], min(100, level * 6))
-    score += min(15, len(indicators) * 5)
-    score = min(score, 100)
+    score = min(100, score + min(15, len(indicators) * 5))
     return {"severity": severity, "risk_score": score, "indicators": indicators, "reasons": reasons}
 
 def apply_policy(deterministic: dict, ai_result: dict | None, threshold: int = 70) -> dict:
-    """AI can raise attention but cannot downgrade deterministic severity or trigger containment."""
-    base_score = int(deterministic["risk_score"])
-    score = base_score
+    """AI may raise attention but cannot downgrade severity or trigger containment."""
+    base_severity = deterministic["severity"]
+    score = max(int(deterministic["risk_score"]), SEVERITY_POINTS[base_severity])
     rationale = list(deterministic["reasons"])
     if ai_result:
         confidence = float(ai_result.get("confidence", 0))
         ai_severity = str(ai_result.get("severity", "low")).lower()
         if confidence >= 0.70:
             score = max(score, {"low": 10, "medium": 35, "high": 70, "critical": 90}.get(ai_severity, 0))
-            rationale.append("AI triage considered with confidence >= 0.70; deterministic score was not reduced")
+            rationale.append("AI triage considered with confidence >= 0.70; deterministic severity was not reduced")
         else:
             rationale.append("AI confidence below 0.70; AI severity not used to raise risk")
-    notify = score >= threshold or deterministic["severity"] == "critical"
+
+    score = min(score, 100)
+    score_severity = "critical" if score >= 90 else "high" if score >= 70 else "medium" if score >= 35 else "low"
+    final_severity = max((base_severity, score_severity), key=lambda item: SEVERITY_RANK[item])
+    notify = score >= threshold or final_severity in {"high", "critical"}
     return {
-        "severity": deterministic["severity"] if deterministic["severity"] == "critical" else (
-            "critical" if score >= 90 else "high" if score >= 70 else "medium" if score >= 35 else "low"
-        ),
+        "severity": final_severity,
         "risk_score": score,
         "notify_analyst": notify,
         "response_action": "human_review_required",
