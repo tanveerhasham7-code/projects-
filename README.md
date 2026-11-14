@@ -49,6 +49,13 @@ An advanced SOC automation project integrating Wazuh alert ingestion, determinis
 
 [Open AI-SOC Sentinel](ai-soc-sentinel/README.md)
 
+## 8. Active Directory SOC Monitoring Lab
+An isolated Windows domain blue-team project covering AD DS architecture, identity and authentication telemetry, Windows Security event analysis, privileged group monitoring, detection engineering, SOC investigation and evidence-based reporting.
+
+**Status:** Project blueprint, proposed architecture, detection hypotheses and practical backlog are published. Domain deployment, event collection, SIEM integration and detections remain unverified until the author performs the labs and uploads sanitized evidence.
+
+[Open Active Directory SOC Monitoring Lab](active-directory-soc-monitoring-lab/README.md)
+
 ## Portfolio principles
 - Document only work that was actually performed.
 - Separate planned work from tested results.
