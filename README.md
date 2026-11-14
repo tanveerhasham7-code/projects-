@@ -56,6 +56,14 @@ An isolated Windows domain blue-team project covering AD DS architecture, identi
 
 [Open Active Directory SOC Monitoring Lab](active-directory-soc-monitoring-lab/README.md)
 
+
+## 9. Windows Advanced Security Monitoring Lab
+A defensive Windows endpoint monitoring project covering native event logs, advanced audit policy, Sysmon, PowerShell logging, process and network telemetry, Defender and Firewall monitoring, Windows Event Forwarding/SIEM collection, detection engineering and SOC investigations.
+
+**Status:** Detailed project blueprint, architecture, build phases, eight detection hypotheses, 15 practical exercises and evidence/report templates are published. Deployment, Sysmon installation, event collection, SIEM forwarding, detections and practical completion remain unverified until the author performs the exercises and uploads sanitized evidence.
+
+[Open Windows Advanced Security Monitoring Lab](windows-advanced-security-monitoring-lab/README.md)
+
 ## Portfolio principles
 - Document only work that was actually performed.
 - Separate planned work from tested results.
