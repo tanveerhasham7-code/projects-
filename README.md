@@ -64,6 +64,14 @@ A defensive Windows endpoint monitoring project covering native event logs, adva
 
 [Open Windows Advanced Security Monitoring Lab](windows-advanced-security-monitoring-lab/README.md)
 
+
+## 10. Microsoft Sentinel SOC Lab — SIEM, KQL, Detection Engineering and Incident Response
+A cloud SIEM learning project covering Azure foundations, Log Analytics Workspace, Sentinel setup, data connectors, KQL hunting, analytics rules, incident triage, entity mapping, workbooks, Logic Apps playbooks, governance and cost awareness.
+
+**Status:** Detailed project blueprint, architecture, KQL starter pack, six detection hypotheses, 16 practical exercises and investigation/report templates are published. Azure deployment, data ingestion, analytics rules, incidents, workbooks, playbooks and practical completion remain unverified until the author performs the exercises and uploads sanitized evidence.
+
+[Open Microsoft Sentinel SOC Lab](microsoft-sentinel-soc-lab/README.md)
+
 ## Portfolio principles
 - Document only work that was actually performed.
 - Separate planned work from tested results.
