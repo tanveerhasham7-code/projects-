@@ -10,7 +10,7 @@ A Python tool that analyzes local synthetic authentication logs and highlights r
 ## 2. Wazuh SOC Home Lab — Windows + Linux
 A structured SIEM/SOC lab covering Wazuh architecture, endpoint telemetry, detection use cases, investigation workflow, incident reporting, and evidence collection.
 
-**Status:** The author reports the lab is installed and has been used for practice. Exact versions, topology, agent health, telemetry, and tested detections are being documented and verified.
+**Status:** The project documentation and guided lab plan are published. Actual installation, endpoint enrollment, telemetry collection, agent health, and detection testing have not been independently verified here. Add sanitized evidence after completing each practical exercise.
 
 [Open Wazuh SOC Home Lab](wazuh-soc-home-lab/README.md)
 
