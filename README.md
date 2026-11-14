@@ -72,6 +72,13 @@ A cloud SIEM learning project covering Azure foundations, Log Analytics Workspac
 
 [Open Microsoft Sentinel SOC Lab](microsoft-sentinel-soc-lab/README.md)
 
+## 11. Splunk SOC Analyst Lab — SIEM, SPL, Detection Engineering and Incident Response
+A defensive SOC project covering Splunk lab architecture, data onboarding, Universal Forwarder concepts, Windows and synthetic telemetry, SPL investigations, authentication and endpoint detection hypotheses, dashboards, threat hunting, incident triage, and evidence-based reporting.
+
+**Status:** Detailed blueprint, query examples, detection hypotheses, 16 practical exercises, and evidence templates are published. Splunk deployment, forwarder configuration, data ingestion, SPL execution, alerts, dashboards, and investigations remain unverified until the author performs the exercises and uploads sanitized evidence.
+
+[Open Splunk SOC Analyst Lab](splunk-soc-analyst-lab/README.md)
+
 ## Portfolio principles
 - Document only work that was actually performed.
 - Separate planned work from tested results.
