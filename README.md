@@ -5,7 +5,7 @@ A portfolio of defensive security, SOC operations, threat hunting, detection eng
 ## 1. LogSentry — Security Log Analyzer
 A Python tool that analyzes local synthetic authentication logs and highlights repeated failed logins for further review.
 
-[Open LogSentry](./)
+[Open LogSentry](log-sentry/README.md)
 
 ## 2. Wazuh SOC Home Lab — Windows + Linux
 A structured SIEM/SOC lab covering Wazuh architecture, endpoint telemetry, detection use cases, investigation workflow, incident reporting, and evidence collection.
